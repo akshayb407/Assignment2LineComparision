@@ -8,39 +8,78 @@ namespace LineComparison
 {
     internal class Length
     {
-        int x1 = 2, x2 = 3;
-        int y1 = 1, y2 = 2;
-
-        int x11 = 2, x12 = 3;
-        int y11 = 1, y12 = 2;
-
-        public void EqualityOfLines()
+        public static void DisplayMessage()
         {
-            int x = (x2-x1) * (x2-x1);  
-            int y = (y2-y1) * (y2-y1);
+            Console.WriteLine("Welcome to Line Comparison Computation Program on Master Branch");
+
+            Length.GetCordinates();
+        }
+
+        public static void GetCordinates()
+        {
+            Console.WriteLine("Enter x1 cordinate");
+            int x1 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter x2 cordinate");
+            int x2 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter y1 cordinate");
+            int y1 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter y2 cordinate");
+            int y2 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter x3 cordinate");
+            int x3 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter x4 cordinate");
+            int x4 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter y3 cordinate");
+            int y3 = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter y4 cordinate");
+            int y4 = Int32.Parse(Console.ReadLine());
+
+           Length.CalculateLength(x1, x2, y1, y2, x3, x4, y3, y4);
+
+
+        }
+
+        public static void CalculateLength(int x1, int x2, int y1, int y2, int x3, int x4, int y3, int y4)
+        {
+            int x = (x2 - x1) * (x2 - x1);
+            int y = (y2 - y1) * (y2 - y1);
             int z = x + y;
+            double length1 = Math.Sqrt(z);
 
-            Console.WriteLine("Length of the Line is :" + Math.Sqrt(z));
+            int a = (x4 - x3) * (x4 - x3);
+            int b = (y4 - y3) * (y4 - y3);
+            int c = a + b;
+            double length2 = Math.Sqrt(c);
 
-            int u = (x11 - x12) * (x11 - x12);
-            int v = (y11 - y12) * (y11 - y12);
-            int w = u + v;
-            Console.WriteLine("Length of the 2nd Line:" + Math.Sqrt(w));
+            CompareLengthOfTwoLines(length1, length2);
+        }
 
-            if (z == w)
+        public static void CompareLengthOfTwoLines(double length1, double length2)
+        {
+            if (length1.CompareTo(length2) == 0)
             {
-                Console.WriteLine("The Two Lines are equals");
-
+                Console.WriteLine("Both lines are equal");
             }
-            else if (z > w)
+            else if (length1.CompareTo(length2) > 0)
             {
-                Console.WriteLine("The Two Lines are not equal and 1st one is greater than the 2nd one");
-
+                Console.WriteLine("Line1 is greater than line2");
             }
             else
             {
-                Console.WriteLine("The Two Lines are not equal and 1st one is less than 2nd one");
+                Console.WriteLine("Line2 is greater than line1");
             }
+        }
+
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
 
     }
