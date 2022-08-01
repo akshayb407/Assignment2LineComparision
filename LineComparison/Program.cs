@@ -7,7 +7,7 @@ namespace LineComparison
         static void Main(string[] args)
         {
             Length.DisplayMessage();
-            Length.GetCordinates();
+          
         }
     }
 }
